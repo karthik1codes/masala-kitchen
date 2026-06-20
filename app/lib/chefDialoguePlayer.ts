@@ -406,7 +406,7 @@ export function playGameWarningDialogue(
   plan: KitchenPlan,
   lines: DialogueLine[],
   reason: "wrong-step" | "serve-blocked",
-): Promise<ReturnType<typeof playChefDialogue>> {
+): ReturnType<typeof playChefDialogue> {
   stopChefDialogue();
   return playChefDialogue(plan.order.label, {
     lines,
@@ -417,7 +417,7 @@ export function playGameWarningDialogue(
 export function playWrongStepDialogue(
   plan: KitchenPlan,
   expected: { number: number; shortLabel: string },
-): Promise<ReturnType<typeof playChefDialogue>> {
+): ReturnType<typeof playChefDialogue> {
   return playGameWarningDialogue(
     plan,
     buildWrongStepDialogue(plan, expected),
@@ -428,7 +428,7 @@ export function playWrongStepDialogue(
 export function playServeTooEarlyDialogue(
   plan: KitchenPlan,
   pendingCount: number,
-): Promise<ReturnType<typeof playChefDialogue>> {
+): ReturnType<typeof playChefDialogue> {
   return playGameWarningDialogue(
     plan,
     buildServeTooEarlyDialogue(plan, pendingCount),
